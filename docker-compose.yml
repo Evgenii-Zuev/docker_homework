@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+    frontend:
+        build:
+            context: .
+            dockerfile: front
+        tty: true
+        container_name: frontend
+        restart: unless-stopped
+        ports:
+            - 3000:3000
+        depends_on:
+          - database
+        networks:
+            - frontend
+            - backend
+    backend:
+        build:
+            context: .
+            dockerfile: back
+        container_name: backend
+        restart: unless-stopped
+        ports:
+            - 8000:8000
+        depends_on:
+            - database
+        networks:
+            - backend
+    database:
+        image: postgres
+        container_name: database
+        restart: unless-stopped
+        ports:
+            - 5432:5432
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        networks:
+            - backend
+networks:
+    frontend:
+    backend:
+volumes:
+    pgdata:

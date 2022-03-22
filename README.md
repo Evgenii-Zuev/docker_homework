@@ -1,3 +1,8 @@
+# Для сборки и запуска проекта использовать
+docker-compose build
+docker-compose up -d
+start browser address  http://localhost:3000
+
 # docker_homework
 # 1 Лекция
 Написать Dockerfile для frontend располагается в директории /frontend, собрать и запустить
