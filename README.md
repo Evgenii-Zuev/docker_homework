@@ -1,6 +1,8 @@
 ## Для сборки и запуска проекта использовать
 docker-compose build
+
 docker-compose up -d
+
 start browser address  http://localhost:3000
 
 
