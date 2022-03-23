@@ -20,6 +20,12 @@ services:
             context: .
             dockerfile: back
         container_name: backend
+        healthcheck:
+            test: curl -sS http://127.0.0.1:8000 || echo 1
+            interval: 1m30s
+            timeout: 30s
+            retries: 3
+            start_period: 30s
         restart: unless-stopped
         ports:
             - 8000:8000
